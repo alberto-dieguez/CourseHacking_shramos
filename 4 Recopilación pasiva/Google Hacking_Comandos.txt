@@ -1,0 +1,187 @@
+Google Hacking: Comandos y Operadores Booleanos
+Estos comandos permiten refinar búsquedas y descubrir información sensible o útil dentro de un proceso de hacking ético y de investigación OSINT. A continuación, encontrarás cada uno con su descripción, un ejemplo de uso y la explicación de qué hace específicamente.
+
+
+
+define:término
+Descripción: Muestra definiciones de diversas páginas web para el término buscado.
+
+Ejemplo: define:osint
+
+Qué hace: Devuelve definiciones de “OSINT”, ayudando a comprender su significado.
+
+
+
+filetype:término (o ext:término)
+Descripción: Restringe la búsqueda a documentos con la extensión especificada (PDF, XLS, DOCX, etc.). Útil para localizar informes, listados o archivos confidenciales.
+
+Ejemplo: filetype:xls "password"
+
+Qué hace: Muestra hojas de cálculo en formato XLS que contengan la palabra “password”, pudiendo revelar credenciales.
+
+
+
+site:sitio/dominio
+Descripción: Filtra los resultados a las páginas de un dominio concreto. Ideal para investigar un objetivo específico.
+
+Ejemplo: site:pastebin.com "email list"
+
+Qué hace: Busca dentro de Pastebin contenido que incluya la frase “email list”, posible indicio de fuga de datos.
+
+
+
+link:url
+Descripción: Muestra qué páginas enlazan a la URL indicada (solo se reflejan enlaces de sitios con cierta relevancia para Google).
+
+Ejemplo: link:https://example.com
+
+Qué hace: Permite averiguar quién enlaza a example.com, útil para investigación OSINT y reputacional.
+
+
+
+cache:url
+Descripción: Muestra la versión que Google tiene guardada en caché de la página indicada.
+
+Ejemplo: cache:https://example.com
+
+Qué hace: Permite ver la última copia de example.com, incluso si el contenido original ha cambiado o sido eliminado.
+
+
+
+info:url
+Descripción: Ofrece información que Google tiene sobre la página o dominio especificado.
+
+Ejemplo: info:https://example.com
+
+Qué hace: Muestra datos relacionados con example.com, por ejemplo la versión en caché o páginas similares.
+
+
+
+related:url
+Descripción: Devuelve páginas que Google considera similares al sitio indicado.
+
+Ejemplo: related:https://example.com
+
+Qué hace: Muestra sitios “relacionados” con example.com, útil para descubrir competencia o dominios similares.
+
+
+
+allinanchor:términos
+Descripción: Restringe resultados a páginas que reciben enlaces (backlinks) cuyo texto contenga todos los términos indicados.
+
+Ejemplo: allinanchor:"database leaked"
+
+Qué hace: Muestra páginas enlazadas con la frase “database leaked” en su anchor text, revelando brechas de datos.
+
+
+
+inanchor:término
+Descripción: Similar a allinanchor, pero se puede combinar con otros términos en la misma búsqueda.
+
+Ejemplo: inanchor:breach "credit cards"
+
+Qué hace: Encuentra páginas cuyo anchor text incluya “breach” y que mencionen “credit cards” en el contenido.
+
+
+
+allintext:términos
+Descripción: Muestra solo páginas que contengan todos los términos en el texto.
+
+Ejemplo: allintext:"internal use only confidential"
+
+Qué hace: Filtra resultados a aquellos que incluyan la frase exacta “internal use only confidential” en el cuerpo del texto.
+
+
+
+intext:término
+Descripción: Busca páginas que incluyan un término en su texto. Puede combinarse con más palabras.
+
+Ejemplo: intext:exposed "api key"
+
+Qué hace: Retorna páginas donde aparezca “exposed” en el texto y que incluyan la frase “api key”, útil para detectar posibles credenciales filtradas.
+
+
+
+allinurl:términos
+Descripción: Muestra solo resultados que tengan todos los términos en la URL.
+
+Ejemplo: allinurl:"admin portal"
+
+Qué hace: Localiza URLs que incluyan “admin” y “portal”, útil para encontrar paneles de administración expuestos.
+
+
+
+inurl:término
+Descripción: Similar a allinurl, pero se puede combinar con otras palabras de búsqueda. Devuelve URLs que contengan el término.
+
+Ejemplo: inurl:wp-admin "vulnerabilities"
+
+Qué hace: Filtra páginas donde la URL contenga “wp-admin” y mencione “vulnerabilities” en el texto, para detectar fallos en WordPress.
+
+
+
+allintitle:términos
+Descripción: Limita los resultados a páginas cuyo título contenga todos los términos indicados.
+
+Ejemplo: allintitle:"database dump"
+
+Qué hace: Muestra resultados con “database dump” en el título, posible indicio de bases de datos expuestas.
+
+
+
+intitle:término
+Descripción: Similar a allintitle, pero se puede combinar con otros términos. Devuelve páginas cuyo título contenga el término.
+
+Ejemplo: intitle:"sql injection" "bypass authentication"
+
+Qué hace: Retorna resultados que en el título incluyan “sql injection” y mencionen “bypass authentication” en el contenido.
+
+
+
+Operadores Booleanos Google Hacking
+Estos operadores permiten combinar o filtrar términos para obtener resultados más específicos en búsquedas OSINT o de información sensible.
+
+
+
+" "
+Descripción: Busca la frase exacta, sin variaciones.
+
+Ejemplo: "employee private data"
+
+Qué hace: Devuelve resultados que incluyan exactamente “employee private data”, revelando posible exposición de datos.
+
+
+
+-
+Descripción: Excluye una palabra de la búsqueda.
+
+Ejemplo: "database dump" -site:github.com
+
+Qué hace: Muestra resultados de “database dump” excluyendo GitHub, centrando la búsqueda en otros dominios.
+
+
+
+OR (ó |)
+Descripción: Funciona como un “o lógico”. Devuelve resultados que contengan uno u otro término.
+
+Ejemplo: "mysql dump" OR "database leak"
+
+Qué hace: Amplía la búsqueda para incluir fugas de bases de datos bajo cualquiera de esos términos.
+
+
+
++
+Descripción: Fuerza la inclusión de palabras que Google suele ignorar (artículos, preposiciones) o caracteres especiales (tildes, ñ, etc.).
+
+Ejemplo: +la "exposed password"
+
+Qué hace: Impide que Google omita “la” y fuerza la frase “exposed password”.
+
+
+
+*
+Descripción: El asterisco se usa como comodín para uno o varios términos desconocidos. Suele usarse con comillas para mantener la posición.
+
+Ejemplo: "confidential * report"
+
+Qué hace: Encuentra frases con “confidential”, luego cualquier palabra, y termina con “report” (por ejemplo, “confidential company report”).

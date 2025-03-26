@@ -1,0 +1,25 @@
+Una de las preguntas más frecuentes que os puede surgir después de ver el vídeo anterior es la siguiente:
+
+¿Cómo es un informe real de Hacking Ético o auditoría de seguridad?
+
+Para resolver esta duda y que tengáis ejemplos reales de cara a poder organizar de la mejor forma posible vuestros informes, me gustaría dejaros por aquí varios recursos que considero valiosos.
+
+Antes de nada, debéis tener en cuenta que los informes de Hacking ético y auditoría de seguridad dependen mucho de la organización que los realiza y del tipo de auditoría que se ha llevado a cabo. No todas las auditoría son completas y siguen todas las fases que se enseñan en este curso, en algunas ocasiones se centran en fases o entornos específicos dentro de la infraestructura tecnológica de una organización. Todo esto se debe concretar en la fase de definición del alcance que se mencionaba en la sección anterior.
+
+El primer recurso que me gustaría compartiros es un repositorio donde podéis encontrar cientos de reportes de auditorías reales de diferentes empresas del sector del Hacking Ético y de la Ciberseguridad que se han ido recopilando a lo largo del tiempo. Tenéis informes de todo tipo y que recogen una diversidad muy grande de auditorías:
+
+https://github.com/juliocesarfort/public-pentesting-reports
+
+El segundo recurso que quiero compartiros se corresponde con diferentes plantillas que podéis utilizar para comenzar a elaborar vuestro propio informe de Hacking Ético o auditoría de seguridad e ir modificándolo para que se adapte a vuestras necesidades:
+
+https://pentestreports.com/templates/
+
+https://github.com/hmaverickadams/TCM-Security-Sample-Pentest-Report
+
+Espero que esta información os resulte de utilidad.
+
+¡Muchas gracias y nos vemos en la siguiente sección!
+
+¡Un saludo!
+
+Santiago.
