@@ -15,4 +15,8 @@ Rad-> Abrir configuración de red-> Cambiar opciones del adaptador-> Redes e Int
 
 **Guarda la imagen, haz una toma instantanea**
 
+# Herramientas
+
+## FOCA: Analisis de metadatos
+
 
