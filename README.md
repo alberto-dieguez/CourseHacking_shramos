@@ -21,11 +21,11 @@ Temario del curso
 
 2. Introducción al Hacking Ético y Penetration Testing: Metodologías de Hacking Ético: OSSTMM, PTEST, ISSAF, OTP, Kali Linux
 
-3. Recopilación pasiva de información: Google Hacking, Shodan, Censys, Whois, Archive, TheHarvester, Maltego, Recon-ng, Kali Linux
+3. [Recopilación pasiva de información: Google Hacking, Shodan, Censys, Whois, Archive, TheHarvester, Maltego, Recon-ng, Kali Linux](/3%20Introducción)
 
-4. Recopilación semi-pasiva de información: FOCA, CentralOps, DNSDumpster, Wireshark, TCPdump, Kali Linux
+4. [Recopilación semi-pasiva de información: FOCA, CentralOps, DNSDumpster, Wireshark, TCPdump, Kali Linux](4%20Recopilación%20pasiva)
 
-5. Recopilación activa de información: Metasploitable 3, DNSrecon, Nmap, Amap, Kali Linux
+5. [Recopilación activa de información: Metasploitable 3, DNSrecon, Nmap, Amap, Kali Linux](5%20Recopilación%20semi%20pasiva)
 
 6. Análisis de vulnerabilidades: CVE, CVSS, CPE, Nessus, Kali Linux
 
