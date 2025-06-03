@@ -1,0 +1,100 @@
+Instalación de Metasploitable3 en MAC M1/M2
+Si dispones de un equipo con MacOS y con el nuevo chip M1 o M2 es posible que tengas problemas con el procedimiento de instalación anterior debido a que las máquinas Metasploitable3 están virtualizadas para procesadores Intel.
+
+Para instalar estas máquinas virtuales en MacOS con M1/M2 debéis seguir los siguientes pasos.
+
+
+
+1. Pre-requisitos
+
+
+
+Instalación de UTM
+
+UTM es un cliente de virtualización que permite ejecutar máquinas virtuales en chips M1.
+
+Descarga UTM desde su página oficial (https://docs.getutm.app/installation/macos/) pulsando sobre Download from GitHub e instala el paquete descargado.
+
+
+
+Instalación de HomeBrew
+
+HomeBrew es un gestor de paquetes para MacOS que te permite instalar de manera muy sencilla una amplia gama de herramientas OpenSource.
+
+Para instalar HomeBrew ejecuta el siguiente comando en una terminal:
+
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+Ten en cuenta que debes tener instalado el paquete Xcode Command Line Tools si no dispones de él. Para ello ejecuta el siguiente comando:
+
+xcode-select --install
+
+Al finalizar la instalación debes poder ejecuta el comando brew. Si ejecutas el comando brew doctor debes obtener una salida por pantalla similar a la siguiente:
+
+Your system is ready to brew.
+
+
+
+2. Descarga de Metasploitable3
+
+Descarga Metasploitable3 desde la página web que se muestra en el vídeo anterior. Asegúrate de elegir las versiones para VirtualBox:
+
+
+Una vez descargados los archivos .zip, sigue el mismo procedimiento que se muestra en el vídeo anterior para descomprimirlos.
+
+
+
+3. Conversión de las máquinas virtuales a formato UTM
+
+En este punto tenemos descomprimidas las máquinas virtuales Metasploitable3 para VirtualBox. Para que funcionen en nuestro equipo MacOS debemos hacerlas compatibles con UTM. Para ello, vamos a utilizar una herramienta llamada qemu.
+
+Instala qemu ejecutando el siguiente comando en una terminal:
+
+brew install qemu
+
+Una vez instalado, ejecuta el siguiente comando para convertir las máquinas al formato correcto:
+
+qemu-img convert -f vmdk -O qcow2 ./metasploitable3-ub1404-disk001.vmdk ./metasploitable3-ub1404-disk001.qcow2
+
+* Ten en cuenta que el fichero metasploitable3-ub1404-disk001.vmdk se encuentra en la carpeta que has descomprimido de metasploitable3-ubuntu (asegúrate de poner la ruta donde se encuentren estos archivos en tu sistema).
+
+
+
+4. Creación de la máquina virtual en UTM
+
+Una vez llegados a este punto ya tenemos todo lo necesario para crear las máquinas virtuales. Para ello, debemos seguir los siguientes pasos en UTM:
+
+Abrimos UTM
+
+Creamos una nueva máquina virtual con el botón + y pulsando en "Emulate"
+
+Seleccionamos "Other"
+
+Pulsamos en "Skip ISO boot"
+
+Podemos disminuir la RAM a 1024.
+
+Pulsamos "siguiente" hasta la página de resumen y en la página de resumen seleccionamos "Open VM Settings" y después "Save"
+
+Se abrirá una nueva ventana con las opciones de la máquina virtual, en esta pantalla podemos modificar el nombre
+
+Pulsamos en "System" y seleccionamos la opción que se muestra en la siguiente imagen:
+
+
+Pulsamos en "QEMU" en la barra lateral y quitamos el check de "UEFI Boot"
+
+Pulsamos sobre "IDE Drive" en el apartado "Drives" de la barra lateral y lo eliminamos pulsando en "Delete Drive"
+
+En la sección "Drives" pulsamos sobre "New Drive" y después "Import"
+
+Seleccionamos el fichero .qcow2 que hemos generado anteriormente con qemu
+
+Pulsamos en "Save" y arrancamos la máquina virtual
+
+
+
+En este punto deberías ser capaz de iniciar Metasploitable3 en tu MacOS con chip M1.
+
+¡Un saludo y nos vemos en la siguiente sección!
+
+Santiago.
