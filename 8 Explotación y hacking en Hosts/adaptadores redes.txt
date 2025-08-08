@@ -1,0 +1,30 @@
+Diferencias entre adaptador de red en modo Bridge, NAT y Host-Only
+Llegados a este punto del curso, es posible que alguno de vosotros se este realizando alguna de las siguientes preguntas:
+
+¿Qué diferencia hay entre configurar el adaptador de red de nuestras máquinas virtuales en modo Host-Only, NAT o Bridge?
+
+¿Estamos seguros configurando nuestras máquinas vulnerables Metasploitable3 en adaptador NAT?
+
+Me gustaría compartir con vosotros un pequeño resumen que he realizado sobre las diferencias entre estos tres mecanismos utilizados para configurar la interfaz de red de una máquina virtual.
+
+1. Con la conexión de red en adaptador puente (Bridge), la máquina virtual tiene acceso directo a la red Ethernet externa y recibe su propia dirección IP en esta red (como si fuese otro equipo más conectado a la red).
+
+Esto quiere decir que, si configuramos la interfaz de red de nuestra máquina virtual en modo Bridge, la máquina virtual recibirá una dirección IP propia dentro de la red en la que se encuentre nuestra máquina host, que tendrá una dirección IP diferente.
+
+Este tipo de configuración permite a otros equipos de la red comunicarse directamente con la máquina virtual a través de su dirección IP y, por lo tanto, si nuestra máquina virtual es vulnerable, puede ser explotada por otra persona que se encuentre en la red.
+
+2. Utilizar la traducción de direcciones de red (NAT) quiere decir que la máquina virtual y el sistema host comparten una única "identidad" (dirección IP) dentro de la red en la que se encuentran. La opción NAT se debe seleccionar si no se quiere tener una dirección IP separada para la máquina virtual, pero se desea tener conectividad a Internet.
+
+Esta configuración NO permite a otros equipos de la red comunicarse directamente con la máquina virtual y, por lo tanto, no podrá ser explotada por otra persona que se encuentre en la red. Sin embargo, la máquina virtual puede establecer conexiones con redes externas como Internet.
+
+3. Utilizar la configuración sólo host (Host-Only) implica establecer una conexión de red entre la máquina virtual y el sistema host, utilizando un adaptador de red virtual que es visible únicamente para el sistema operativo del host.
+
+Con el adaptador de red en sólo host, la máquina virtual puede comunicarse sólo con el sistema host y otras máquinas virtuales en la red de sólo host. La máquina virtual no tendrá conectividad a Internet o con otros equipos de la red en la que se encuentra la máquina host.
+
+Esta opción se selecciona para crear una red virtual aislada y es de especial interés para pruebas de seguridad, debido a que, aunque se infecte la máquina virtual, no puede expandirse la infección a ningún otro equipo de la red.
+
+Espero que esta explicación sobre los tipos de conexión del adaptador de red de las máquinas virtuales os resulte de utilidad y os permita tomar mejores decisiones sobre su configuración.
+
+¡Muchas gracias a todos y nos vemos en la siguiente sección!
+
+Santiago.
